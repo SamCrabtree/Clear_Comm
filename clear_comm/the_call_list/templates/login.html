@@ -1,0 +1,25 @@
+<center><h3>Log In</h3></center><br/>
+<center><form method="POST" action="">
+  {% csrf_token %}
+    <div class="form-floating mb-3">
+        <center><label for="floatingInput">Username</label></center>
+        <input style="max-width: 40%;"type="text" class="form-control" name="username" id="floatingInput" placeholder="Username">
+
+      </div>
+   
+      <div class="form-floating">
+        <center><label for="floatingPassword">Password</label></center>
+        <input style="max-width: 40%;" type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+       
+      </div>
+      <div class="d-flex justify-content-center mt-3 login_container">
+        <input class="btn login_btn btn-success" type="submit" value="Login">
+        </div>
+</form>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
