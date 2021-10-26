@@ -2,16 +2,19 @@
 {% block title %}Clear_Comm | Call List{% endblock %}
 {% block content %}
     <center><h1>Call List</h1>
-    <table>
+    <table class="table table-striped table-bordered">
+        <thead>
         <tr>
-            <th>Address</th>
-            <th>Property Type</th>
-            <th>Contact</th>
-            <th>Phone Number</th>
-            <th>Created</th>
-            <th>Last Updated</th>
+            <th class="text-white bg-dark">Address</th>
+            <th class="text-white bg-dark">Type</th>
+            <th class="text-white bg-dark">Contact</th>
+            <th class="text-white bg-dark">Phone</th>
+            <th class="text-white bg-dark">Created</th>
+            <th class="text-white bg-dark">Updated</th>
+            <th class="text-white bg-dark">Details</th>
         </tr>
-       
+        </thead>
+        <tbody>
         <tr>
             <td></td>
             <td></td>
@@ -19,8 +22,21 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
-     
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+     </tbody>
     </table>
+
 </center>
+<button class="btn btn-info text-dark">Add Lead</button>
 {% endblock %}

@@ -9,7 +9,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     
 </head>
+<body>
 
+        <header>
+            <div class="container-fluid">
+
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <a class="navbar-brand" href="{% url 'home' %}">Clear_Comm</a>
+             
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0 mr-1">
+                      {% if user.is_authenticated %}
+                  
+                        <button class="btn logout_btn btn-warning"><a class="nav-link" href="{% url 'logoutUser' %}"> <span class="align-middle"><b>Logout</b></span></a></button>
+                    
+                      {% else %}
+                        <button class="btn login_btn btn-success"><a class="nav-link" href="{% url 'login' %}"><span class="align-middle"><b>Login</b></span></a></button>
+                  
+                      {% endif %}
+                    </ul>
+            
+                    
+                </div>
+
+                
+            </nav>
+        </header>
 
 <main>
     <br/>
