@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Clear_Comm{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    
+    <link rel="shortcut icon" href="{%  static 'phone.svg' %}">
 </head>
 <body>
 
         <header>
-            <div class="container-fluid">
+         
 
             <nav class="navbar navbar-expand-md navbar-light bg-light">
-                <a class="navbar-brand" href="{% url 'home' %}">Clear_Comm</a>
+                <a class="navbar-brand" href="{% url 'home' %}"> &NonBreakingSpace;  Clear_Comm</a>
              
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0 mr-1">
                       {% if user.is_authenticated %}
@@ -46,7 +46,7 @@
     <footer>
         <center><small>&copy;{%now "Y"%} Bluewood Solutions - All Rights Reserved<br/> Built and Designed by Bluewood Technology.</small></center> 
     </footer>
-
+<br/><br/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 </html>

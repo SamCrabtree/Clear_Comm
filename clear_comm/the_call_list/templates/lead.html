@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Clear_Comm | Lead Details{% endblock %}
+{% block title %}{{ property.address }}{% endblock %}
 {% block content %}
     <center><h1>{{ property.address }}</h1></center>
         <br/>
@@ -18,6 +18,22 @@
             <td class=><center>{{ property.created }}</center></td>
             <td class="text-white bg-dark"><center><b>Last Updated:</b></center></td>
             <td class=><center>{{ property.updated }}</center></td>
+        </tr>
+        <tr>
+            <td colspan="8" ></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="text-white bg-dark"> <center><b>Address Information</b></center></td>
+        </tr>
+        <tr>
+            <td class="text-white bg-dark"><center><b>Street Address:</b></center></td>
+            <td><center>{{ property.address }}</center></td>
+            <td class="text-white bg-dark"><center><b>City:</b></center></td>
+            <td class=><center>{{ property.city }}</center></td>
+            <td class="text-white bg-dark"><center><b>State:</b></center></td>
+            <td><center>{{ property.state }}</center></td>
+            <td class="text-white bg-dark"><center><b>Zip Code:</b></center></td>
+            <td class=><center>{{ property.zip_code }}</center></td>
         </tr>
         <tr>
             <td colspan="8" ></td>
@@ -42,8 +58,33 @@
             <td colspan="8" class="text-white bg-dark"> <center><b>Notes</b></center></td>
         </tr>
         <tr>
-            <td colspan="8"><center>{{property.notes}}</center></td>
-            
+            <td colspan="8"><center>
+           <table class="table table-bordered table-striped">
+                <tr>
+                    <th class="text-white bg-dark"><center>Note Type</center></th>
+                    <th class="text-white bg-dark"><center>Details</center></th>
+                    <th class="text-white bg-dark"><center>Created By</center></th>
+                    <th class="text-white bg-dark"><center>Date</center></th>
+                </tr>
+                {% if not property.notes.all %}
+                <tr><td colspan="4"><center><i>There are no notes for this lead</i></center></td></tr>
+                {% else %}
+                {% for x in property.notes.all %}
+                <tr>
+                    <td><center><b>{{ x.note_type}}</b></center></td>
+                    <td><center><i>{{ x.note}}</i></center></td>
+                    <td><center>{{ x.creator}}</center></td>
+                    <td><center>{{ x.created}}</center></td>
+                </tr>
+                {% endfor %}
+
+                {% endif %}
+           
+
+
+            </table>
+                
+            </center></td>
         </tr>
 
 
