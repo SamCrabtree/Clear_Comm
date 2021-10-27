@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Clear_Comm | Lead Details{% endblock %}
+{% block content %}
+    <center><h1>{{ property.address }}</h1></center>
+        <br/>
+    <table class="table table-bordered">
+        <tr>
+            <td colspan="8" class="text-white bg-dark"> <center><b>Lead Information</b></center></td>
+        </tr>
+        <tr>
+            <td class="text-white bg-dark"><center><b>Lead Origin:</b></center></td>
+            <td><center>{{ property.origin }}</center></td>
+            <td class="text-white bg-dark"><center><b>Property Type:</b></center></td>
+            <td><center>{{ property.property_type }}</center></td>
+            <td class="text-white bg-dark"><center><b>Created:</b></center></td>
+            <td class=><center>{{ property.created }}</center></td>
+            <td class="text-white bg-dark"><center><b>Last Updated:</b></center></td>
+            <td class=><center>{{ property.updated }}</center></td>
+        </tr>
+        <tr>
+            <td colspan="8" ></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="text-white bg-dark"> <center><b>Contact Information</b></center></td>
+        </tr>
+        <tr>
+
+            <td colspan="2" class="text-white bg-dark"><center><b>Owner/Contact:</b></center></td>
+            <td colspan="2"><center>{{ property.contact }}</center></td>
+            <td class="text-white bg-dark"><center><b>Phone Number:</b></center></td>
+            <td><center>{{ property.phone }}</center></td>
+            <td class="text-white bg-dark"><center><b>Email:</b></center></td>
+            <td class=><center>{{ property.email }}</center></td>
+
+        </tr>
+        <tr>
+            <td colspan="8" > </td>
+        </tr>
+        <tr>
+            <td colspan="8" class="text-white bg-dark"> <center><b>Notes</b></center></td>
+        </tr>
+        <tr>
+            <td colspan="8"><center>{{property.notes}}</center></td>
+            
+        </tr>
+
+
+       
+    </table>
+
+
+{% endblock %}

@@ -1,7 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+TYPE_CHOICES = (
+    ('other' , 'OTHER'),
+    ('single family' , 'SINGLE FAMILY'),
+    ('commercial', 'COMMERCIAL'),
+    ('duplex', 'DUPLEX' ),
+    ('triplex' , 'TRIPLEX'),
+    ('multiplex', 'MULTIPLEX' ),
+    ('lot/land', 'LOT/LAND' ),
+)
 
 STATUS_CHOICES = (
     ('cold' , 'COLD'),
@@ -23,6 +31,7 @@ NOTE_CHOICES = (
 
 class property(models.Model):
     address = models.CharField(max_length=500)
+    property_type = models.CharField(max_length=500, choices=TYPE_CHOICES, default='other')
     contact = models.CharField(max_length=500)
     phone = models.CharField(max_length=11)
     origin = models.CharField(max_length=40)

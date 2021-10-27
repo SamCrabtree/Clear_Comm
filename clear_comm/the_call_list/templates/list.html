@@ -1,39 +1,33 @@
+
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Clear_Comm | Call List{% endblock %}
 {% block content %}
     <center><h1>Call List</h1>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th class="text-white bg-dark">Address</th>
-            <th class="text-white bg-dark">Type</th>
-            <th class="text-white bg-dark">Contact</th>
-            <th class="text-white bg-dark">Phone</th>
-            <th class="text-white bg-dark">Created</th>
-            <th class="text-white bg-dark">Updated</th>
-            <th class="text-white bg-dark">Details</th>
+            <th class="text-white bg-dark"><center>Address</center></th>
+            <th class="text-white bg-dark"><center>Type</center></th>
+            <th class="text-white bg-dark"><center>Status</center></th>
+            <th class="text-white bg-dark"><center>Created</center></th>
+            <th class="text-white bg-dark"><center>Last Updated</center></th>
+            <th class="text-white bg-dark"><center>Details</center></th>
         </tr>
         </thead>
         <tbody>
+        {% for lead in object_list %}
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><center>{{ lead.address }}</center></td>
+            <td><center>{{ lead.property_type }}</center></td>
+            <td><center>{{ lead.status }}</center></td>
+            <td><center>{{ lead.created }}</center></td>
+            <td><center>{{ lead.updated }}</center></td>
+            <td><center><a href="{% url 'lead' lead.pk %}"><img src="{% static 'images/question.svg' %}"></a></center></td>
+       
         </tr>
-
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        {% endfor %}
+       
      </tbody>
     </table>
 

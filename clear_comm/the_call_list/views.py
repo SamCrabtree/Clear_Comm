@@ -1,13 +1,24 @@
+from typing import List
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout 
 from django.contrib import messages
+from .models import property
 
 def home(request):
     return render(request, 'home.html', {}) 
 
-def dash(request):
-    return render(request, 'list.html', {}) 
+class LeadView(ListView):
+    model = property
+    template_name = 'list.html'
+
+class LeadDetails(DetailView):
+    model = property
+    template_name = 'lead.html'
+    
+#def dash(request):
+#    return render(request, 'list.html', {}) 
 
 def loginPage(request):
 
