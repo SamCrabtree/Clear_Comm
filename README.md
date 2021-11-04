@@ -13,9 +13,15 @@ The program meets the following course requirements:
 
 1. Create a class, then create at least one object of that class and populate it with data. The value of at least one object must be used somewhere in your code.  
 
+This is taken care of by the use of Classes undeneath the file models.py. Both the Property and notes file store this 
+
 2. Create a dictionary or list and populate it with several values, retrieve at least one value, and use it in your program. 
 
-3. Connects to an external API
+This requirement is met by using three list's (Type_Choices, Status_Choices, & Note_Choices) contatining tuple values in the models.py file. 
+
+3. 
+
+Connects to an external API
 
 
 

@@ -1,61 +1,62 @@
 
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{{ property.address }}{% endblock %}
+{% block title %} {% if user.is_authenticated %}{{ property.address }} {% else %} Clear_Comm | Uh-oh! {% endif %}{% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
     <center><h1>{{ property.address }}</h1></center>
         <br/>
     <table class="table table-bordered">
         <tr>
-            <td colspan="8" class="text-white bg-dark"> <center><b>Lead Information</b></center></td>
+            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Lead Information</b></center></td>
         </tr>
         <tr>
-            <td class="text-white bg-dark"><center><b>Lead Origin:</b></center></td>
-            <td><center>{{ property.origin }}</center></td>
-            <td class="text-white bg-dark"><center><b>Property Type:</b></center></td>
-            <td><center>{{ property.property_type }}</center></td>
-            <td class="text-white bg-dark"><center><b>Created:</b></center></td>
-            <td class=><center>{{ property.created }}</center></td>
-            <td class="text-white bg-dark"><center><b>Last Updated:</b></center></td>
-            <td class=><center>{{ property.updated }}</center></td>
-        </tr>
-        <tr>
-            <td colspan="8" ></td>
-        </tr>
-        <tr>
-            <td colspan="8" class="text-white bg-dark"> <center><b>Address Information</b></center></td>
-        </tr>
-        <tr>
-            <td class="text-white bg-dark"><center><b>Street Address:</b></center></td>
-            <td><center>{{ property.address }}</center></td>
-            <td class="text-white bg-dark"><center><b>City:</b></center></td>
-            <td class=><center>{{ property.city }}</center></td>
-            <td class="text-white bg-dark"><center><b>State:</b></center></td>
-            <td><center>{{ property.state }}</center></td>
-            <td class="text-white bg-dark"><center><b>Zip Code:</b></center></td>
-            <td class=><center>{{ property.zip_code }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>Lead Origin:</b></center></td>
+            <td class="align-middle"><center>{{ property.origin }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>Property Type:</b></center></td>
+            <td class="align-middle align-middle"><center>{{ property.property_type }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>Created:</b></center></td>
+            <td class="align-middle"><center>{{ property.created }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>Last Updated:</b></center></td>
+            <td class="align-middle"><center>{{ property.updated }}</center></td>
         </tr>
         <tr>
             <td colspan="8" ></td>
         </tr>
         <tr>
-            <td colspan="8" class="text-white bg-dark"> <center><b>Contact Information</b></center></td>
+            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Address Information</b></center></td>
+        </tr>
+        <tr>
+            <td class="text-white bg-dark align-middle"><center><b>Street Address:</b></center></td>
+            <td class="align-middle"><center>{{ property.address }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>City:</b></center></td>
+            <td class="align-middle"><center>{{ property.city }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>State:</b></center></td>
+            <td class="align-middle"><center>{{ property.state }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>Zip Code:</b></center></td>
+            <td class="align-middle"><center>{{ property.zip_code }}</center></td>
+        </tr>
+        <tr>
+            <td colspan="8" ></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Contact Information</b></center></td>
         </tr>
         <tr>
 
-            <td colspan="2" class="text-white bg-dark"><center><b>Owner/Contact:</b></center></td>
-            <td colspan="2"><center>{{ property.contact }}</center></td>
-            <td class="text-white bg-dark"><center><b>Phone Number:</b></center></td>
-            <td><center>{{ property.phone }}</center></td>
-            <td class="text-white bg-dark"><center><b>Email:</b></center></td>
-            <td class=><center>{{ property.email }}</center></td>
+            <td colspan="2" class="text-white bg-dark align-middle"><center><b>Owner/Contact:</b></center></td>
+            <td colspan="2" class="align-middle"><center>{{ property.contact }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>Phone:</b></center></td>
+            <td class="align-middle"><center>{{ property.phone }}</center></td>
+            <td class="text-white bg-dark align-middle"><center><b>Email:</b></center></td>
+            <td class="align-middle"><center>{{ property.email }}</center></td>
 
         </tr>
         <tr>
             <td colspan="8" > </td>
         </tr>
         <tr>
-            <td colspan="8" class="text-white bg-dark"> <center><b>Notes</b></center></td>
+            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Notes</b></center></td>
         </tr>
         <tr>
             <td colspan="8"><center>
@@ -83,13 +84,24 @@
 
 
             </table>
-                
-            </center></td>
+            <button class="btn btn-info text-dark">Add Note</button> </center>
+            </td>
         </tr>
 
 
        
     </table>
-
+    <button class="btn btn-info text-dark">Edit Lead</button>  <button class="btn btn-warning text-dark">Archive</button> <a href="{% url 'delete_lead' property.pk %}"><button class="btn btn-danger text-dark">Delete</button> </a>
+    {% else %}
+    <br/><br/>
+    <center><h1>Uh-Oh!</h1></center>
+    <br>
+    <center>Seems like you are not authorized to view this page. If you believe you received this message in error, try logging in again below. If that doesn't work, please reach out to your system admin for further assistance. </center>
+    <br/><br/>
+    <center>    <form action="/login/">
+        <input class="btn login_btn btn-success" type="submit" value="Login" />
+      </form></center>
+    
+    {% endif %}
 
 {% endblock %}

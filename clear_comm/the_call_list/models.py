@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
-TYPE_CHOICES = (
+TYPE_CHOICES = [
     ('Other' , 'OTHER'),
     ('Single Family' , 'SINGLE FAMILY'),
     ('Commercial', 'COMMERCIAL'),
@@ -9,16 +10,17 @@ TYPE_CHOICES = (
     ('Triplex' , 'TRIPLEX'),
     ('Multiplex', 'MULTIPLEX' ),
     ('Lot/Land', 'LOT/LAND' ),
-)
+]
 
-STATUS_CHOICES = (
+STATUS_CHOICES = [
     ('Cold' , 'COLD'),
     ('In Contact', 'IN CONTACT'),
+    ('nurture', 'NURTURE'),
     ('Appointment Set', 'APPOINTMENT SET' ),
     ('Offer Made' , 'OFFER MADE')
-)
+]
 
-NOTE_CHOICES = (
+NOTE_CHOICES = [
     ('Call' , 'CALL'),
     ('Text', 'TEXT'),
     ('Email', 'EMAIL' ),
@@ -28,7 +30,8 @@ NOTE_CHOICES = (
     ('Bad Number', 'BAD NUMBER'),
     ('Bad Email', 'BAD EMAIL'),
     ('Do Not Contact', 'DO NOT CONTACT')
-)
+]
+
 
 class property(models.Model):
     address = models.CharField(max_length=500)
@@ -47,13 +50,15 @@ class property(models.Model):
 
 
     def __str__(self):
-        return self.address 
+        return self.address
+
+    def get_absolute_url(self):
+        return reverse('lead', args=(str(self.id))) 
 
 class note(models.Model):
     Property = models.ForeignKey(property, related_name="notes",on_delete=models.CASCADE)
     note_type = models.CharField(max_length=500, choices=NOTE_CHOICES, default='Internal Note')
     note = models.TextField(max_length=1000)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

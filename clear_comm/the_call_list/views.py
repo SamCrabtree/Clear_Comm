@@ -1,10 +1,12 @@
 from typing import List
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy 
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import property
+from django.views.generic.edit import DeleteView
+from .models import property, note
 
 def home(request):
     return render(request, 'home.html', {}) 
@@ -16,9 +18,28 @@ class LeadView(ListView):
 class LeadDetails(DetailView):
     model = property
     template_name = 'lead.html'
+
+class AddLeadView(CreateView):
+    model = property
+    template_name = 'add_lead.html' 
+    fields = '__all__'
+
+class DeleteLeadView(DeleteView):
+    model = property
+    template_name = 'delete_lead.html' 
     
-#def dash(request):
-#    return render(request, 'list.html', {}) 
+class AddNoteView(CreateView):
+    model = note
+    template_name = 'add_note.html' 
+    #fields = '__all__'
+    fields = ()
+
+class DeleteNoteView(DeleteView):
+    model = note
+    template_name = 'delete_note.html' 
+    
+
+
 
 def loginPage(request):
 

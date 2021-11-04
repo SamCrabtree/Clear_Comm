@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Clear_Comm | Delete Lead{% endblock %}
+{% block content %}
+<br/><br/>
+    <center><h1>Delete Lead </h1></center>
+       <form class='form' method="POST">
+        {% csrf_token %}
+        <strong>Are you sure you want to delete this lead?</strong>
+        <button class="btn btn-warning text-dark">DELETE</button> 
+       </form>
+
+{% endblock %}

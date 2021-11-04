@@ -3,27 +3,33 @@
 {% load static %}
 {% block title %}Clear_Comm | Call List{% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
     <center><h1>Call List</h1>
+
+        
+                  
+       
+ 
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th class="text-white bg-dark"><center>Address</center></th>
-            <th class="text-white bg-dark"><center>Type</center></th>
-            <th class="text-white bg-dark"><center>Status</center></th>
-            <th class="text-white bg-dark"><center>Created</center></th>
-            <th class="text-white bg-dark"><center>Last Updated</center></th>
-            <th class="text-white bg-dark"><center>Details</center></th>
+            <th class="text-white bg-dark align-middle"><center>Address</center></th>
+            <th class="text-white bg-dark align-middle"><center>Type</center></th>
+            <th class="text-white bg-dark align-middle"><center>Status</center></th>
+            <th class="text-white bg-dark align-middle"><center>Created</center></th>
+            <th class="text-white bg-dark align-middle"><center>Last Updated</center></th>
+            <th class="text-white bg-dark align-middle"><center>Details</center></th>
         </tr>
         </thead>
         <tbody>
         {% for lead in object_list %}
         <tr>
-            <td><center>{{ lead.address }}</center></td>
-            <td><center>{{ lead.property_type }}</center></td>
-            <td><center>{{ lead.status }}</center></td>
-            <td><center>{{ lead.created }}</center></td>
-            <td><center>{{ lead.updated }}</center></td>
-            <td><center><a href="{% url 'lead' lead.pk %}"><img src="{% static 'images/question.svg' %}"></a></center></td>
+            <td class="align-middle"><center>{{ lead.address }}</center></td>
+            <td class="align-middle"><center>{{ lead.property_type }}</center></td>
+            <td class="align-middle"><center>{{ lead.status }}</center></td>
+            <td class="align-middle"><center>{{ lead.created }}</center></td>
+            <td class="align-middle"><center>{{ lead.updated }}</center></td>
+            <td class="align-middle"><center><a href="{% url 'lead' lead.pk %}"><img src="{% static 'images/question.svg' %}"></a></center></td>
        
         </tr>
         {% endfor %}
@@ -32,5 +38,18 @@
     </table>
 
 </center>
-<button class="btn btn-info text-dark">Add Lead</button>
+<form action="/add_lead/">
+    <input class="btn login_btn btn-info" type="submit" value="Add Lead" />
+  </form>
+{% else %}
+<br/><br/>
+<center><h1>Uh-Oh!</h1></center>
+<br>
+<center>Seems like you are not authorized to view this page. If you believe you received this message in error, try logging in again below. If that doesn't work, please reach out to your system admin for further assistance. </center>
+<br/><br/>
+<center>    <form action="/login/">
+    <input class="btn login_btn btn-success" type="submit" value="Login" />
+  </form></center>
+
+{% endif %}
 {% endblock %}
