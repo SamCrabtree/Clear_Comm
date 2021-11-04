@@ -13,15 +13,16 @@ The program meets the following course requirements:
 
 1. Create a class, then create at least one object of that class and populate it with data. The value of at least one object must be used somewhere in your code.  
 
-This is taken care of by the use of Classes undeneath the file models.py. Both the Property and notes file store this 
+This is taken care of by the use of Classes undeneath the file models.py. Both the Property and notes file have multiple variables containing user inputted data which is recorded and then displayed on both the admin side of DJANGO and the front facing web pages. 
 
 2. Create a dictionary or list and populate it with several values, retrieve at least one value, and use it in your program. 
 
 This requirement is met by using three list's (Type_Choices, Status_Choices, & Note_Choices) contatining tuple values in the models.py file. 
 
-3. 
+3. Create and call at least 3 functions or methods, at least one of which must return a value that is used somewhere else in your code. 
 
-Connects to an external API
+These requirements are met 
+
 
 
 
@@ -35,7 +36,7 @@ C. Navigate to the cloned folder via the terminal and create a virtual environme
 
 D. Activate your virtual environment, and then in the terminal type the following command to install all required programs:
 
-pip3 install -r requirements.txt
+pip3 install -r clear_comm/requirements.txt
 
 
 **To Setup: 
@@ -53,12 +54,7 @@ python -c "import secrets; print(secrets.token_urlsafe())”
   C. Once you save the file, you will need to add the .env file to your gitignore file to prevent accidently listing your . 
 
 
-2. Connection to API
-
-  A. ????
-
-
-3. Create SuperUser
+2. Create SuperUser
 
   A. Navigate to the folder via the terminal and run the following command: 
   
@@ -66,11 +62,20 @@ python -c "import secrets; print(secrets.token_urlsafe())”
 
 
 
-4. Activate Local Host
+3. Activate Local Host
 
   A. In the terminal, activate your virtual enviorment, and then type the following command: 
 
-This will activate the Local Server and you can now enter the program by entering the following IP into the 
+This will activate the Local Server and you can now enter the program by entering the following IP into your web browser: 
+
+127.0.0.1:8000
+
+If you wish to view the admin side of things, you can login to the backend of the program by navigating to 
+
+127.0.0.1:8000/admin
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 from typing import List
 from django.shortcuts import render
-from django.urls import reverse_lazy 
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -23,20 +23,24 @@ class AddLeadView(CreateView):
     model = property
     template_name = 'add_lead.html' 
     fields = '__all__'
+    success_url = reverse_lazy('dash')
 
 class DeleteLeadView(DeleteView):
     model = property
     template_name = 'delete_lead.html' 
+    success_url = reverse_lazy('dash')
     
 class AddNoteView(CreateView):
     model = note
     template_name = 'add_note.html' 
-    #fields = '__all__'
-    fields = ()
+    fields = '__all__'
+    success_url = reverse_lazy('dash')
 
 class DeleteNoteView(DeleteView):
     model = note
     template_name = 'delete_note.html' 
+    success_url = reverse_lazy('dash')
+        
     
 
 
