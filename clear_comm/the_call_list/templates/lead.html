@@ -84,14 +84,14 @@
 
 
             </table>
-            <button class="btn btn-info text-dark">Add Note</button> </center>
+            <a href="{% url 'add_note' %}"><button class="btn btn-info text-dark">Add Note</button></a> </center>
             </td>
         </tr>
 
 
        
     </table>
-    <button class="btn btn-info text-dark">Edit Lead</button>  <button class="btn btn-warning text-dark">Archive</button> <a href="{% url 'delete_lead' property.pk %}"><button class="btn btn-danger text-dark">Delete</button> </a>
+    <a href="{% url 'update_lead' property.pk %}"><button class="btn btn-info text-dark">Edit Lead</button></a> <a href="{% url 'delete_lead' property.pk %}"><button class="btn btn-danger text-dark">Delete</button> </a>
     {% else %}
     <br/><br/>
     <center><h1>Uh-Oh!</h1></center>

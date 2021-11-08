@@ -1,7 +1,7 @@
 from typing import List
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -22,6 +22,12 @@ class LeadDetails(DetailView):
 class AddLeadView(CreateView):
     model = property
     template_name = 'add_lead.html' 
+    fields = '__all__'
+    success_url = reverse_lazy('dash')
+
+class UpdateLeadView(UpdateView):
+    model = property
+    template_name = 'edit_lead.html'
     fields = '__all__'
     success_url = reverse_lazy('dash')
 

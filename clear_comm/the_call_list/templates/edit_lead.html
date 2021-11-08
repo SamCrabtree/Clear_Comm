@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Clear_Comm | Edit Lead{% endblock %}
+{% block content %}
+<br/><br/>
+    <center><h1>Add A New Lead</h1></center>
+       <form class='form' method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info text-dark">Update</button> 
+       </form>
+
+{% endblock %}

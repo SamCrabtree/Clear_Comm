@@ -3,8 +3,11 @@
 {% block content %}
 <br/><br/>
  
-        <center><h1>Add A Note</h1>
-           
-        </center>
+<center><h1>Add A New Note</h1></center>
+<form class='form' method="POST">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <button class="btn btn-info text-dark">Enter</button> 
+</form>
 
 {% endblock %}
