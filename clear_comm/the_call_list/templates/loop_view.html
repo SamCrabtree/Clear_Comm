@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Clear_Comm | Loops {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<br/><br>
+<center><h1><img src=" {% static 'images/loop.svg' %}"> Open Loops</h1></center>
+
+    <center><table class="table table-bordered">
+        <tr>
+            <th class="table-secondary">Loop</th>
+            <th class="table-secondary">Type</th>
+            <th class="table-secondary"></th>
+        </tr>
+
+        {% for loop in object_list %}
+        <tr>
+            <td><center>{{ loop.loop }}</center> </td>
+            <td> <center>{{ loop.loop_type }}</center></td>
+            <td><center><a href="{% url 'loop' loop.pk %}"><img src="{% static 'images/question.svg' %}"></a></center></td>
+
+        </tr>
+        {% endfor %}
+    </table></center>
+
+{% else %}
+<br/><br/>
+    <center><h1>Welcome to Clear_Comm!</h1>
+        <br/><br/>
+    <p>Clear_Comm is the first CRM program designed specifically for small businesses that operate in the field of Off Market Real Estate. We designed this product from the ground up using feedback and wisdom from local off market real-estate purchasers to help provide a personalized solution for those in our industry.</p>
+    <br/><br/>
+    <p>To get started, login below with your credentials!</p>
+    <br><br>
+    <form action="/login/">
+        <input class="btn login_btn btn-success" type="submit" value="Login" />
+      </form>
+    </center>
+
+{% endif %}
+{% endblock%}

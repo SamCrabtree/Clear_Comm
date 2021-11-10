@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
-{% block title %}Clear_Comm | Home{% endblock %}
+{% load static %}
+{% block title %}Clear_Comm | Loops {% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
+<br/><br/>
+   
+    <table class="table table-bordered">
+        <tr>
+            <th colspan="2" class="table-secondary"><center><h1>{{ loop.loop }}</h1></center></th>
+        </tr>
+        <tr>
+            <td><center>{{ loop.loop_type }}</center></td>
+            <td><center>{{ loop.contact }}</center></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><center>{{ loop.goal }}</center> </td>
+
+        </tr>
+    </table>
+
+{% else %}
 <br/><br/>
     <center><h1>Welcome to Clear_Comm!</h1>
         <br/><br/>
@@ -12,4 +32,6 @@
         <input class="btn login_btn btn-success" type="submit" value="Login" />
       </form>
     </center>
-{% endblock %}
+
+{% endif %}
+{% endblock%}

@@ -3,10 +3,12 @@
 {% block content %}
 <br/><br/>
     <center><h1>Add A New Lead</h1></center>
-       <form class='form' method="POST">
+    <div class="form-group">
+       <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-info text-dark">Add Lead</button> 
        </form>
+    </div>
 
 {% endblock %}

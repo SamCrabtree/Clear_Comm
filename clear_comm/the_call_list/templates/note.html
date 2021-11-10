@@ -4,7 +4,7 @@
 {% block title %} {% if user.is_authenticated %}{{ property.address }} {% else %} Clear_Comm | Uh-oh! {% endif %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-    <center><h1>{{ property.address }}</h1></center>
+    <center><h1>{{ Property.property.address }}</h1></center>
         <br/>
     <table class="table table-bordered">
         <tr>
@@ -66,6 +66,7 @@
                     <th class="text-white bg-dark"><center>Details</center></th>
                     <th class="text-white bg-dark"><center>Created By</center></th>
                     <th class="text-white bg-dark"><center>Date</center></th>
+                    <th></th>
                 </tr>
                 {% if not property.notes.all %}
                 <tr><td colspan="4"><center><i>There are no notes for this lead</i></center></td></tr>
@@ -76,6 +77,7 @@
                     <td><center><i>{{ x.note}}</i></center></td>
                     <td><center>{{ x.creator.first_name}} {{ x.creator.last_name}}</center></td>
                     <td><center>{{ x.created}}</center></td>
+                    <td><center><a href="{% url 'note' note.pk %}"><img src="{% static 'images/question.svg' %}"></a></center></td>
                 </tr>
                 {% endfor %}
 

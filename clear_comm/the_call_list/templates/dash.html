@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Clear_Comm | Home {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<br/>
+<center><div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <form action="/add_lead/">
+            <input class="btn login_btn btn-info" type="submit" value="Add Lead" />
+          </form>
+      </div>
+      <div class="col-sm">
+        <form action="/loops/">
+            <input class="btn login_btn btn-info" type="submit" value="Loops" />
+          </form>
+      </div>
+      <div class="col-sm">
+        <form action="/call_list/">
+            <input class="btn login_btn btn-info" type="submit" value="Call List" />
+          </form>
+      </div>
+    </div>
+  </div>
+  </center>
+<br/>
+  <center><h1>Weekly Game Plan</h1></center>
+<br/>
+<center><em>Check out your teams primary and secondary goals below!</em></center>
+{% for Tent in object_list %}
+    <table class="table table-bordered">
+        <tr>
+            <th colspan="2" class="table-secondary"><center><img src=" {% static 'images/door.svg' %}"> Door</center></th>
+        </tr>
+        <tr>
+            <td colspan="2"> {{ Tent.door }} </td>
+        </tr>
+        <tr>
+            <th class="table-secondary"><center><img src=" {% static 'images/key.svg' %}"> Key 1</center></th>
+            <th class="table-secondary"><center><img src=" {% static 'images/key.svg' %}"> Key 2</center></th>
+        </tr>
+        <tr>
+            <td> {{ Tent.key_1 }}</td>
+            <td> {{ Tent.key_2 }} </td>
+        </tr>
+        <tr>
+            <th class="table-secondary"><center><img src=" {% static 'images/key.svg' %}"> Key 3</center></th>
+            <th class="table-secondary"><center><img src=" {% static 'images/key.svg' %}"> Key 4</center></th>
+        </tr>
+        <tr>
+            <td> {{ Tent.key_3 }}</td>
+            <td> {{ Tent.key_4 }} </td>
+        </tr>
+        <tr>
+            <th colspan="2" class="table-secondary"><center><img src=" {% static 'images/lessons.svg' %}"> Lessons Learned</center></th>
+        </tr>
+        <tr>
+            <td colspan="2"> {{ Tent.lessons }} </td>
+        </tr>
+
+    </table>
+    <center><a href="{% url 'update_tent' Tent.pk %}"><button class="btn btn-info text-dark">Update</button></a> </center>
+   {% endfor %}
+
+{% else %}
+<br/><br/>
+    <center><h1>Welcome to Clear_Comm!</h1>
+        <br/><br/>
+    <p>Clear_Comm is the first CRM program designed specifically for small businesses that operate in the field of Off Market Real Estate. We designed this product from the ground up using feedback and wisdom from local off market real-estate purchasers to help provide a personalized solution for those in our industry.</p>
+    <br/><br/>
+    <p>To get started, login below with your credentials!</p>
+    <br><br>
+    <form action="/login/">
+        <input class="btn login_btn btn-success" type="submit" value="Login" />
+      </form>
+    </center>
+
+{% endif %}
+{% endblock%}
