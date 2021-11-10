@@ -64,7 +64,7 @@ Prior to launching the program, you will need to generate and hide your own "spe
 
   - Open the terminal and navigate to the root directory and type the following command: 
 
-    python3 -c "import secrets; print('Secret_Key=' + secrets.token_urlsafe())" > .env
+        python3 -c "import secrets; print('Secret_Key=' + secrets.token_urlsafe())" > .env
 
   This will generate a secure key and assign it to the "Secret_Key" variable in a .env file. 
 
@@ -74,7 +74,7 @@ Prior to launching the program, you will need to generate and hide your own "spe
   - Navigate to the clear_comm folder in your directory. 
   - Enter the following commands to make your first migrations. 
 
-    python3 manage.py makemigrations
+        python3 manage.py makemigrations
 
 and then 
 
