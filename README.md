@@ -96,7 +96,7 @@ Activating a local server allows you to view the program via your web browser an
 
   - In the terminal, activate your virtual enviorment, and then type the following command: 
 
-    python3 manage.py runserver 
+        python3 manage.py runserver 
 
 This will activate the Local Server and you can now enter the program by entering the following IP into your web browser: 
 
