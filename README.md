@@ -79,7 +79,7 @@ Prior to launching the program, you will need to generate and hide your own "spe
   You will now need to make dnago migrations to begin 
   - Navigate to the clear_comm folder in your directory using the following command:
 
-      cd clear_comm
+          cd clear_comm
 
   - Enter the following commands to make your first migrations. 
 
