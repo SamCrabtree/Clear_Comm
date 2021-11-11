@@ -96,7 +96,7 @@ and then
 
   - Navigate to the folder via the terminal and run the following command: 
 
-      python3 manage.py createsuperuser
+          python3 manage.py createsuperuser
   
   - Follow the prompts via the terminal to enter a username, email, and password. 
 
