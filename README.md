@@ -47,7 +47,10 @@ B. Clone the repo to your local machine.
 C. Navigate to the cloned folder via the terminal and create a virtual environment by running the following command:
         python3 -m venv <name_of_virtualenv>
 
-D. Activate your virtual environment, and then in the terminal type the following command to install all required programs:
+D. Activate your virtual environment by entering the following command:
+     source venv/bin/activate
+
+E. Once your virtual envioronment is active in the terminal type the following command to install all required programs:
 
     pip3 install -r requirements.txt
 
