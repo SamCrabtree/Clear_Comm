@@ -95,6 +95,8 @@ and then
  Creating a superuser creates your username and password for the entire program and is needed to access the programs functionality.   
 
   - Navigate to the folder via the terminal and run the following command: 
+
+      python3 manage.py createsuperuser
   
   - Follow the prompts via the terminal to enter a username, email, and password. 
 
