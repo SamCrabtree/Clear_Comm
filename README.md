@@ -77,7 +77,10 @@ Prior to launching the program, you will need to generate and hide your own "spe
 
 2. Make Migrations
   You will now need to make dnago migrations to begin 
-  - Navigate to the clear_comm folder in your directory. 
+  - Navigate to the clear_comm folder in your directory using the following command:
+
+      cd clear_comm
+
   - Enter the following commands to make your first migrations. 
 
         python3 manage.py makemigrations
