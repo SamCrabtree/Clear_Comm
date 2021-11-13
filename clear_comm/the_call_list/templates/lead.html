@@ -66,6 +66,8 @@
                     <th class="text-white bg-dark"><center>Details</center></th>
                     <th class="text-white bg-dark"><center>Created By</center></th>
                     <th class="text-white bg-dark"><center>Date</center></th>
+                    <th class="text-white bg-dark"><center>Details</center></th>
+
                 </tr>
                 {% if not property.notes.all %}
                 <tr><td colspan="4"><center><i>There are no notes for this lead</i></center></td></tr>
@@ -73,9 +75,10 @@
                 {% for x in property.notes.all %}
                 <tr>
                     <td><center><b>{{ x.note_type}}</b></center></td>
-                    <td><center><i>{{ x.note}}</i></center></td>
+                    <td><center><i>{{ x.note | safe}}</i></center></td>
                     <td><center>{{ x.creator.first_name}} {{ x.creator.last_name}}</center></td>
                     <td><center>{{ x.created}}</center></td>
+                    <td><center><a href="{% url 'note_details' x.pk %}"><img src="{% static 'images/question.svg' %}"></a></center></td>
                 </tr>
                 {% endfor %}
 
@@ -84,7 +87,7 @@
 
 
             </table>
-            <a href="{% url 'add_note' property.pk %}"><button class="btn btn-info text-dark">Add Note</button></a> </center>
+            <a href="{% url 'add_note' property.pk %}"><button class="btn btn-warning text-dark">Add Note</button></a> </center>
             </td>
         </tr>
 

@@ -4,13 +4,13 @@
 {% block content %}
 {% if user.is_authenticated %}
 <br/><br>
-<center><h1><img src=" {% static 'images/loop.svg' %}"> Open Loops</h1></center>
+<center><h1><img src=" {% static 'images/loop.svg' %}"> Open Loops <img src=" {% static 'images/loop.svg' %}"> </h1></center><br/>
 
     <center><table class="table table-bordered">
         <tr>
-            <th class="table-secondary">Loop</th>
-            <th class="table-secondary">Type</th>
-            <th class="table-secondary"></th>
+            <th class="table-secondary"><center>Loop</center></th>
+            <th class="table-secondary"><center>Type</center></th>
+            <th class="table-secondary"><center>Details</center></th>
         </tr>
 
         {% for loop in object_list %}
@@ -22,7 +22,9 @@
         </tr>
         {% endfor %}
     </table></center>
-
+    <form action="/add_loop/">
+        <input class="btn login_btn btn-info" type="submit" value="Add Loop" />
+      </form>
 {% else %}
 <br/><br/>
     <center><h1>Welcome to Clear_Comm!</h1>

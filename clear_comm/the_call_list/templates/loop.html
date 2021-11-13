@@ -15,10 +15,11 @@
         </tr>
 
         <tr>
-            <td colspan="2"><center>{{ loop.goal }}</center> </td>
+            <td colspan="2"><center>{{ loop.goal | safe }}</center> </td>
 
         </tr>
     </table>
+    <a href="{% url 'update_loop' loop.pk %}"><button class="btn btn-info text-dark">Edit Lead</button></a> <a href="{% url 'delete_loop' loop.pk %}"><button class="btn btn-danger text-dark">Delete</button> </a>
 
 {% else %}
 <br/><br/>

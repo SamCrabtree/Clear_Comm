@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Clear_Comm | Delete Loop{% endblock %}
+{% block title %}Clear_Comm | Delete Note{% endblock %}
 {% block content %}
 <br/><br/>
-    <center><h1>Delete Loop </h1></center>
+    <center><h1>Delete Note </h1></center>
        <form class='form' method="POST">
         {% csrf_token %}
         <br/>
-       <center> <h4><em><strong>Are you sure you want to delete this loop?</strong></em></h4></center>
+       <center> <h4><em><strong>Are you sure you want to delete this note?</strong></em></h4></center>
        <br/>
        <center><button class="btn btn-danger text-dark"><b>DELETE</b></button> </center>
        </form>

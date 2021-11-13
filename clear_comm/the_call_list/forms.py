@@ -42,6 +42,17 @@ class NoteForm(forms.ModelForm):
             'note': forms.Textarea(attrs={'class':'form-control'}),
 
         }
+
+class UpdateNoteForm(forms.ModelForm):
+    class Meta:
+        model = note
+        fields = ('note_type', 'note' )
+
+        widgets = {
+            'note_type': forms.Select(attrs={'class':'form-control'}),
+            'note': forms.Textarea(attrs={'class':'form-control'}),
+
+        }
     
 
 class LoopForm(forms.ModelForm):

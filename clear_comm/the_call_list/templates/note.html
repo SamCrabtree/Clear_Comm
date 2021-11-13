@@ -1,109 +1,57 @@
-
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} {% if user.is_authenticated %}{{ property.address }} {% else %} Clear_Comm | Uh-oh! {% endif %}{% endblock %}
+{% block title %}Clear_Comm | Note Details {% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-    <center><h1>{{ Property.property.address }}</h1></center>
-        <br/>
+<br/><br/>
+   <center>
     <table class="table table-bordered">
         <tr>
-            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Lead Information</b></center></td>
-        </tr>
-        <tr>
-            <td class="text-white bg-dark align-middle"><center><b>Lead Origin:</b></center></td>
-            <td class="align-middle"><center>{{ property.origin }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>Property Type:</b></center></td>
-            <td class="align-middle align-middle"><center>{{ property.property_type }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>Created:</b></center></td>
-            <td class="align-middle"><center>{{ property.created }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>Last Updated:</b></center></td>
-            <td class="align-middle"><center>{{ property.updated }}</center></td>
-        </tr>
-        <tr>
-            <td colspan="8" ></td>
-        </tr>
-        <tr>
-            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Address Information</b></center></td>
-        </tr>
-        <tr>
-            <td class="text-white bg-dark align-middle"><center><b>Street Address:</b></center></td>
-            <td class="align-middle"><center>{{ property.address }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>City:</b></center></td>
-            <td class="align-middle"><center>{{ property.city }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>State:</b></center></td>
-            <td class="align-middle"><center>{{ property.state }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>Zip Code:</b></center></td>
-            <td class="align-middle"><center>{{ property.zip_code }}</center></td>
-        </tr>
-        <tr>
-            <td colspan="8" ></td>
-        </tr>
-        <tr>
-            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Contact Information</b></center></td>
+            <th colspan="4" class="table-secondary"><center><h1>{{ note.Property }}</h1></center></th>
         </tr>
         <tr>
 
-            <td colspan="2" class="text-white bg-dark align-middle"><center><b>Owner/Contact:</b></center></td>
-            <td colspan="2" class="align-middle"><center>{{ property.contact }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>Phone:</b></center></td>
-            <td class="align-middle"><center>{{ property.phone }}</center></td>
-            <td class="text-white bg-dark align-middle"><center><b>Email:</b></center></td>
-            <td class="align-middle"><center>{{ property.email }}</center></td>
+        </tr>
+        <tr>
+            <td class="text-white bg-dark"><center>Note Details</center></td>
+            <td><center>{{note.note_type}}</center></td>
+            <td class="text-white bg-dark"><center>Created</center></td>
+            <td><center>{{ note.created}}</center></td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-white bg-dark"><center>Note</center> </td>
 
         </tr>
         <tr>
-            <td colspan="8" > </td>
+            <td colspan="4"><center>{{ note.note | safe }}</center> </td>
+
         </tr>
+
         <tr>
-            <td colspan="8" class="text-white bg-dark align-middle"> <center><b>Notes</b></center></td>
+            <td class="text-white bg-dark"><center>Created By</center></td>
+            <td><center>{{note.creator}}</center></td>
+            <td class="text-white bg-dark"><center>Last Updated</center></td>
+            <td><center>{{ note.updated}}</center></td>
         </tr>
-        <tr>
-            <td colspan="8"><center>
-           <table class="table table-bordered table-striped">
-                <tr>
-                    <th class="text-white bg-dark"><center>Note Type</center></th>
-                    <th class="text-white bg-dark"><center>Details</center></th>
-                    <th class="text-white bg-dark"><center>Created By</center></th>
-                    <th class="text-white bg-dark"><center>Date</center></th>
-                    <th></th>
-                </tr>
-                {% if not property.notes.all %}
-                <tr><td colspan="4"><center><i>There are no notes for this lead</i></center></td></tr>
-                {% else %}
-                {% for x in property.notes.all %}
-                <tr>
-                    <td><center><b>{{ x.note_type}}</b></center></td>
-                    <td><center><i>{{ x.note}}</i></center></td>
-                    <td><center>{{ x.creator.first_name}} {{ x.creator.last_name}}</center></td>
-                    <td><center>{{ x.created}}</center></td>
-                    <td><center><a href="{% url 'note' note.pk %}"><img src="{% static 'images/question.svg' %}"></a></center></td>
-                </tr>
-                {% endfor %}
-
-                {% endif %}
-           
-
-
-            </table>
-            <a href="{% url 'add_note' property.pk %}"><button class="btn btn-info text-dark">Add Note</button></a> </center>
-            </td>
-        </tr>
-
-
-       
     </table>
-    <a href="{% url 'update_lead' property.pk %}"><button class="btn btn-info text-dark">Edit Lead</button></a> <a href="{% url 'delete_lead' property.pk %}"><button class="btn btn-danger text-dark">Delete</button> </a>
-    {% else %}
-    <br/><br/>
-    <center><h1>Uh-Oh!</h1></center>
-    <br>
-    <center>Seems like you are not authorized to view this page. If you believe you received this message in error, try logging in again below. If that doesn't work, please reach out to your system admin for further assistance. </center>
-    <br/><br/>
-    <center>    <form action="/login/">
-        <input class="btn login_btn btn-success" type="submit" value="Login" />
-      </form></center>
-    
-    {% endif %}
+</center>
+{% if user.id == note.creator.id %}
+<a href="{% url 'delete_note' note.pk %}"><button class="btn btn-danger text-dark">Delete Note</button></a> 
+<a href="{% url 'update_note' note.pk %}"><button class="btn btn-warning text-dark">Edit Note</button></a> 
 
-{% endblock %}
+{% endif %}
+{% else %}
+<br/><br/>
+    <center><h1>Welcome to Clear_Comm!</h1>
+        <br/><br/>
+    <p>Clear_Comm is the first CRM program designed specifically for small businesses that operate in the field of Off Market Real Estate. We designed this product from the ground up using feedback and wisdom from local off market real-estate purchasers to help provide a personalized solution for those in our industry.</p>
+    <br/><br/>
+    <p>To get started, login below with your credentials!</p>
+    <br><br>
+    <form action="/login/">
+        <input class="btn login_btn btn-success" type="submit" value="Login" />
+      </form>
+    </center>
+
+{% endif %}
+{% endblock%}

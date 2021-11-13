@@ -1,17 +1,19 @@
 from typing import List
 from django.forms import models
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.generic.edit import DeleteView
 from .models import property, note, Tent, Loop
-from .forms import LeadForm, UpdateLeadForm, NoteForm, LoopForm, UpdateLoopForm, UpdateTentForm
+from .forms import LeadForm, UpdateLeadForm, NoteForm, UpdateNoteForm, LoopForm, UpdateLoopForm, UpdateTentForm
 
 def home(request):
     return render(request, 'home.html', {}) 
+
+# Tent Views
 
 class TentListView(ListView):
     model = Tent
@@ -23,6 +25,9 @@ class UpdateTentView(UpdateView):
     form_class = UpdateTentForm
     template_name = 'edit_tent.html'
     success_url = reverse_lazy('dash')
+
+
+ # Loop Views    
 
 class LoopView(ListView):
     model = Loop
@@ -36,22 +41,27 @@ class AddLoopView(CreateView):
     model = Loop
     form_class = LoopForm
     template_name = 'add_loop.html'
+    success_url = reverse_lazy('loops')
 
 class UpdateLoopView(UpdateView):
     model = Loop
     form_class = UpdateLoopForm
     template_name = 'edit_loop.html'
-    success_url = reverse_lazy('loop_view')
+    success_url = reverse_lazy('loops')
 
 
 class DeleteLoopView(DeleteView):
     model = Loop
     template_name = 'delete_loop.html' 
-    success_url = reverse_lazy('loop_view')
+    success_url = reverse_lazy('loops')
+
+
+# Lead Views
 
 class LeadView(ListView):
     model = property
     template_name = 'list.html'
+
 
 class LeadDetails(DetailView):
     model = property
@@ -67,8 +77,6 @@ class AddLeadView(CreateView):
         form.instance.creator = self.request.user
         return super().form_valid(form)
 
-
-
 class UpdateLeadView(UpdateView):
     model = property
     form_class = UpdateLeadForm
@@ -83,17 +91,30 @@ class DeleteLeadView(DeleteView):
     template_name = 'delete_lead.html' 
     success_url = reverse_lazy('dash')
     
+# Note Classes 
+
 class AddNoteView(CreateView):
     model = note
     form_class = NoteForm
     template_name = 'add_note.html' 
-    success_url = reverse_lazy('dash')
+    success_url = reverse_lazy('call_list')
     def form_valid(self, form):
         form.instance.Property_id = self.kwargs['pk']
         form.instance.creator = self.request.user
         return super().form_valid(form)
     
+class NoteDetailView(DetailView):
+    model = note
+    template_name = 'note.html'
 
+class UpdateNoteView(UpdateView):
+    model = note
+    form_class = UpdateNoteForm
+    template_name = 'edit_note.html'
+    success_url = reverse_lazy('call_list')
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
 
 
 class DeleteNoteView(DeleteView):

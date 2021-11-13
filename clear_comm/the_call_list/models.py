@@ -16,7 +16,7 @@ TYPE_CHOICES = [
 STATUS_CHOICES = [
     ('Cold' , 'COLD'),
     ('In Contact', 'IN CONTACT'),
-    ('nurture', 'NURTURE'),
+    ('Nurture', 'NURTURE'),
     ('Appointment Set', 'APPOINTMENT SET' ),
     ('Offer Made' , 'OFFER MADE')
 ]
