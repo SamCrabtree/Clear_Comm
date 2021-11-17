@@ -113,6 +113,10 @@ This will activate the Local Server and you can now enter the program by enterin
 
     127.0.0.1:8000
 
+You will then be taken to the homepage. 
+
+![Clear_Comm Home](github_img/clearcommmain.png "Clear_comm")
+
 If you wish to view the admin side of things, you can login to the backend of the program by navigating to 
 
     127.0.0.1:8000/admin
