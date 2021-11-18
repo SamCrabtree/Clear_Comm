@@ -5,7 +5,8 @@ A Real Estate Lead Program
 
 This project is a program developed to help process leads and information for a hypothetical Real Estate Company. 
 
-Upon reaching the login screen, you will need to use the admin username and password you will create in the setup steps below, 
+Upon reaching the login screen, you will need to use the admin username and password you will create in the setup steps below.
+ 
 ![Clear_Comm Login](github_img/clearcommlogin.png "Clear_comm")
 
 Upon login, users will be presented with a screen that contains a dashboard that shows it's organization's weekly goals, and a list of a few options.
