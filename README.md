@@ -5,7 +5,28 @@ A Real Estate Lead Program
 
 This project is a program developed to help process leads and information for a hypothetical Real Estate Company. 
 
-Upon login (you will need to use the admin username and password you created in the setup steps below), users will be presented with a screen that contains a dashboard that shows it's organization's weekly goals, and a list of a few options such as "Add A Lead" which takes you to a form page that allows you to create a lead for a property, "Loops" which shows the team any open tasks they may need to complete, and "Call List" which takes you to a page that contains all of your current leads. In regards to the "Call List" page, you will see all lead entries in a list that shows its of address/property leads and their status. Clicking on the question mark next to any of these leads will display all related information. You will also be able to update the lead with updated information, add notes or delete the lead entirely from the list.
+Upon reaching the login screen, you will need to use the admin username and password you will create in the setup steps below, 
+![Clear_Comm Login](github_img/clearcommlogin.png "Clear_comm")
+
+Upon login, users will be presented with a screen that contains a dashboard that shows it's organization's weekly goals, and a list of a few options.
+![Clear_Comm Main](github_img/clearcommgameplan.png "Main Screen")
+ 
+ The first option "Add A Lead"  takes you to a form page that allows you to create a lead for a property that will be added to the call list.
+![Clear_Comm Add Lead](github_img/clearcomm_add.png "Add Lead")
+
+ The "Loops" option shows the team any open tasks they may need to complete, and the ability to add new stuff to its list
+ ![Clear_Comm Loops](github_img/clearcommloops.png "Clear_comm")
+
+ The last option is "Call List" which takes you to a page that contains all of your current leads. 
+ 
+ ![Clear_Comm Call List](github_img/clearcommcalist.png "Callist")
+
+
+ In regards to the "Call List" page, you will see all lead entries in a list that shows its of address/property leads and their status. Clicking on the question mark next to any of these leads will display all related information.
+ 
+![Clear_Comm Lead](github_img/clearcommlead.png "Clear_comm Lead")
+ 
+  You will also be able to update the lead with updated information, add notes or delete the lead entirely from the list.
 
 
 
